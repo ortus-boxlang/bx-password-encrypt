@@ -1,4 +1,4 @@
-package ortus.boxlang.moduleslug.interceptors;
+package ortus.boxlang.modules.encrypt.interceptors;
 
 import org.slf4j.LoggerFactory;
 
@@ -6,7 +6,7 @@ import ortus.boxlang.runtime.events.BaseInterceptor;
 import ortus.boxlang.runtime.events.InterceptionPoint;
 import ortus.boxlang.runtime.types.IStruct;
 
-public class ExampleInterceptor extends BaseInterceptor {
+public class EncryptionRequest extends BaseInterceptor {
 
 	/**
 	 * This method is called by the BoxLang runtime to configure the interceptor
@@ -24,8 +24,8 @@ public class ExampleInterceptor extends BaseInterceptor {
 	 * Add your events below with an @interceptionPoint
 	 */
 	@InterceptionPoint
-	public void onApplicationStart( IStruct data ) {
-		logger.info( "onApplicationStart" );
+	public void onEncryptionRequest( IStruct data ) {
+		logger.info( "Encryption request received: " + data.asString() );
 	}
 
 }

@@ -45,7 +45,7 @@ component {
 		command( "tokenReplace" )
 			.params(
 				path        = "/#variables.cwd#/**",
-				token       = "@MODULE_NAME@",
+				token       = "Encryption",
 				replacement = moduleName
 			)
 			.run();
@@ -53,7 +53,7 @@ component {
 		command( "tokenReplace" )
 			.params(
 				path        = "/#variables.cwd#/**",
-				token       = "@MODULE_REGISTERED_NAME@",
+				token       = "encrypt",
 				replacement = moduleRegisteredName
 			)
 			.run();
@@ -61,7 +61,7 @@ component {
 		command( "tokenReplace" )
 			.params(
 				path        = "/#variables.cwd#/**",
-				token       = "@MODULE_SLUG@",
+				token       = "bx-password-encrypt",
 				replacement = moduleSlug
 			)
 			.run();
@@ -69,7 +69,7 @@ component {
 		command( "tokenReplace" )
 			.params(
 				path        = "/#variables.cwd#/**",
-				token       = "@MODULE_DESCRIPTION@",
+				token       = "Enables Encryption and Cryptography functionality for the BoxLang Runtime",
 				replacement = moduleDescription
 			)
 			.run();

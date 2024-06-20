@@ -1,4 +1,4 @@
-package ortus.boxlang.moduleslug.components;
+package ortus.boxlang.modules.encrypt.components;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

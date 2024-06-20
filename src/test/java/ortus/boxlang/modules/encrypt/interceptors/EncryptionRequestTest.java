@@ -1,4 +1,4 @@
-package ortus.boxlang.moduleslug.interceptors;
+package ortus.boxlang.modules.encrypt.interceptors;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,7 @@ import ortus.boxlang.runtime.scopes.VariablesScope;
 import ortus.boxlang.runtime.services.InterceptorService;
 import ortus.boxlang.runtime.types.Struct;
 
-public class ExampleInterceptorTest {
+public class EncryptionRequestTest {
 
 	static BoxRuntime			runtime;
 	static InterceptorService	interceptorService;
@@ -39,7 +39,7 @@ public class ExampleInterceptorTest {
 	public void testInterceptor() {
 		// Register the interceptor with the interceptor service
 		interceptorService.register(
-		    new ExampleInterceptor()
+		    new EncryptionRequest()
 		);
 
 		// Announce the event the interceptor listens to

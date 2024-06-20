@@ -29,6 +29,10 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.connectbot:jbcrypt:1.0.2'
+	implementation 'de.mkammerer:argon2-jvm:2.11'
+	implementation 'com.lambdaworks:scrypt:1.4.0'
+
 	// Until BoxLang is published to Maven Central
 	// Look for it in the local build directory
 	// You must run `./gradle build -x test` in the BoxLang project

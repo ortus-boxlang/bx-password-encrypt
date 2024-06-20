@@ -1,0 +1,116 @@
+{
+  "ASTType" : "BoxScript",
+  "ASTPackage" : "ortus.boxlang.compiler.ast",
+  "sourceText" : "argonVerify( \"blah\", \"blah\" );",
+  "position" : {
+    "start" : {
+      "line" : 1,
+      "column" : 0
+    },
+    "end" : {
+      "line" : 1,
+      "column" : 30
+    }
+  },
+  "comments" : [ ],
+  "statements" : [ {
+    "ASTType" : "BoxExpressionStatement",
+    "ASTPackage" : "ortus.boxlang.compiler.ast.statement",
+    "sourceText" : "argonVerify( \"blah\", \"blah\" );",
+    "position" : {
+      "start" : {
+        "line" : 1,
+        "column" : 0
+      },
+      "end" : {
+        "line" : 1,
+        "column" : 30
+      }
+    },
+    "comments" : [ ],
+    "expression" : {
+      "ASTType" : "BoxFunctionInvocation",
+      "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+      "sourceText" : "argonVerify( \"blah\", \"blah\" )",
+      "position" : {
+        "start" : {
+          "line" : 1,
+          "column" : 0
+        },
+        "end" : {
+          "line" : 1,
+          "column" : 29
+        }
+      },
+      "comments" : [ ],
+      "name" : "argonVerify",
+      "arguments" : [ {
+        "ASTType" : "BoxArgument",
+        "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+        "sourceText" : "\"blah\"",
+        "position" : {
+          "start" : {
+            "line" : 1,
+            "column" : 13
+          },
+          "end" : {
+            "line" : 1,
+            "column" : 19
+          }
+        },
+        "comments" : [ ],
+        "name" : null,
+        "value" : {
+          "ASTType" : "BoxStringLiteral",
+          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+          "sourceText" : "\"blah\"",
+          "position" : {
+            "start" : {
+              "line" : 1,
+              "column" : 13
+            },
+            "end" : {
+              "line" : 1,
+              "column" : 19
+            }
+          },
+          "comments" : [ ],
+          "value" : "blah"
+        }
+      }, {
+        "ASTType" : "BoxArgument",
+        "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+        "sourceText" : "\"blah\"",
+        "position" : {
+          "start" : {
+            "line" : 1,
+            "column" : 21
+          },
+          "end" : {
+            "line" : 1,
+            "column" : 27
+          }
+        },
+        "comments" : [ ],
+        "name" : null,
+        "value" : {
+          "ASTType" : "BoxStringLiteral",
+          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+          "sourceText" : "\"blah\"",
+          "position" : {
+            "start" : {
+              "line" : 1,
+              "column" : 21
+            },
+            "end" : {
+              "line" : 1,
+              "column" : 27
+            }
+          },
+          "comments" : [ ],
+          "value" : "blah"
+        }
+      } ]
+    }
+  } ]
+}
