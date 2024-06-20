@@ -49,12 +49,16 @@ public class ArgonVerify extends BIF {
 	}
 
 	/**
-	 * Describe what the invocation of your bif function does
+	 * Performs a Argon2 verification on the given string against the hashed value.
 	 *
 	 * @param context   The context in which the BIF is being invoked.
 	 * @param arguments Argument scope for the BIF.
 	 *
-	 * @argument.foo Describe any expected arguments
+	 * @argument.input The string to verify against the hash.
+	 * 
+	 * @argument.hashed The hashed value to verify against.
+	 * 
+	 * @argument.variant The variant of Argon2 to use. If not provided the hashed value will be tested to determine the variant.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
 		String	input	= arguments.getAsString( Key.input );

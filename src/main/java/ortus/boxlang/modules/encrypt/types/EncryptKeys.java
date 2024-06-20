@@ -10,4 +10,5 @@ public class EncryptKeys {
 	public static final Key	hashed		= Key.of( "hashed" );
 	public static final Key	parallelism	= Key.of( "parallelism" );
 	public static final Key	memory		= Key.of( "memory" );
+	public static final Key	keySize		= Key.of( "keySize" );
 }

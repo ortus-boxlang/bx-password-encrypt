@@ -1,7 +1,7 @@
 {
   "ASTType" : "BoxScript",
   "ASTPackage" : "ortus.boxlang.compiler.ast",
-  "sourceText" : "argonVerify( \"blah\", \"blah\" );",
+  "sourceText" : "result = GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 );",
   "position" : {
     "start" : {
       "line" : 1,
@@ -9,14 +9,14 @@
     },
     "end" : {
       "line" : 1,
-      "column" : 30
+      "column" : 60
     }
   },
   "comments" : [ ],
   "statements" : [ {
     "ASTType" : "BoxExpressionStatement",
     "ASTPackage" : "ortus.boxlang.compiler.ast.statement",
-    "sourceText" : "argonVerify( \"blah\", \"blah\" );",
+    "sourceText" : "result = GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 );",
     "position" : {
       "start" : {
         "line" : 1,
@@ -24,14 +24,14 @@
       },
       "end" : {
         "line" : 1,
-        "column" : 30
+        "column" : 60
       }
     },
     "comments" : [ ],
     "expression" : {
-      "ASTType" : "BoxFunctionInvocation",
+      "ASTType" : "BoxAssignment",
       "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-      "sourceText" : "argonVerify( \"blah\", \"blah\" )",
+      "sourceText" : "result = GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 )",
       "position" : {
         "start" : {
           "line" : 1,
@@ -39,78 +39,183 @@
         },
         "end" : {
           "line" : 1,
-          "column" : 29
+          "column" : 59
         }
       },
       "comments" : [ ],
-      "name" : "argonVerify",
-      "arguments" : [ {
-        "ASTType" : "BoxArgument",
+      "modifiers" : [ ],
+      "left" : {
+        "ASTType" : "BoxIdentifier",
         "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-        "sourceText" : "\"blah\"",
+        "sourceText" : "result",
         "position" : {
           "start" : {
             "line" : 1,
-            "column" : 13
+            "column" : 0
           },
           "end" : {
             "line" : 1,
-            "column" : 19
+            "column" : 6
           }
         },
         "comments" : [ ],
-        "name" : null,
-        "value" : {
-          "ASTType" : "BoxStringLiteral",
-          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-          "sourceText" : "\"blah\"",
-          "position" : {
-            "start" : {
-              "line" : 1,
-              "column" : 13
-            },
-            "end" : {
-              "line" : 1,
-              "column" : 19
-            }
-          },
-          "comments" : [ ],
-          "value" : "blah"
-        }
-      }, {
-        "ASTType" : "BoxArgument",
+        "name" : "result"
+      },
+      "op" : {
+        "ASTType" : "BoxAssignment",
         "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-        "sourceText" : "\"blah\"",
+        "sourceText" : "Equal"
+      },
+      "right" : {
+        "ASTType" : "BoxFunctionInvocation",
+        "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+        "sourceText" : "GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 )",
         "position" : {
           "start" : {
             "line" : 1,
-            "column" : 21
+            "column" : 9
           },
           "end" : {
             "line" : 1,
-            "column" : 27
+            "column" : 59
           }
         },
         "comments" : [ ],
-        "name" : null,
-        "value" : {
-          "ASTType" : "BoxStringLiteral",
+        "name" : "GeneratePBKDFKey",
+        "arguments" : [ {
+          "ASTType" : "BoxArgument",
           "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-          "sourceText" : "\"blah\"",
+          "sourceText" : "\"secret\"",
           "position" : {
             "start" : {
-              "line" : 1,
-              "column" : 21
-            },
-            "end" : {
               "line" : 1,
               "column" : 27
+            },
+            "end" : {
+              "line" : 1,
+              "column" : 35
             }
           },
           "comments" : [ ],
-          "value" : "blah"
-        }
-      } ]
+          "name" : null,
+          "value" : {
+            "ASTType" : "BoxStringLiteral",
+            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+            "sourceText" : "\"secret\"",
+            "position" : {
+              "start" : {
+                "line" : 1,
+                "column" : 27
+              },
+              "end" : {
+                "line" : 1,
+                "column" : 35
+              }
+            },
+            "comments" : [ ],
+            "value" : "secret"
+          }
+        }, {
+          "ASTType" : "BoxArgument",
+          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+          "sourceText" : "\"saltyone\"",
+          "position" : {
+            "start" : {
+              "line" : 1,
+              "column" : 36
+            },
+            "end" : {
+              "line" : 1,
+              "column" : 46
+            }
+          },
+          "comments" : [ ],
+          "name" : null,
+          "value" : {
+            "ASTType" : "BoxStringLiteral",
+            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+            "sourceText" : "\"saltyone\"",
+            "position" : {
+              "start" : {
+                "line" : 1,
+                "column" : 36
+              },
+              "end" : {
+                "line" : 1,
+                "column" : 46
+              }
+            },
+            "comments" : [ ],
+            "value" : "saltyone"
+          }
+        }, {
+          "ASTType" : "BoxArgument",
+          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+          "sourceText" : "5000",
+          "position" : {
+            "start" : {
+              "line" : 1,
+              "column" : 48
+            },
+            "end" : {
+              "line" : 1,
+              "column" : 52
+            }
+          },
+          "comments" : [ ],
+          "name" : null,
+          "value" : {
+            "ASTType" : "BoxIntegerLiteral",
+            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+            "sourceText" : "5000",
+            "position" : {
+              "start" : {
+                "line" : 1,
+                "column" : 48
+              },
+              "end" : {
+                "line" : 1,
+                "column" : 52
+              }
+            },
+            "comments" : [ ],
+            "value" : "5000"
+          }
+        }, {
+          "ASTType" : "BoxArgument",
+          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+          "sourceText" : "128",
+          "position" : {
+            "start" : {
+              "line" : 1,
+              "column" : 54
+            },
+            "end" : {
+              "line" : 1,
+              "column" : 57
+            }
+          },
+          "comments" : [ ],
+          "name" : null,
+          "value" : {
+            "ASTType" : "BoxIntegerLiteral",
+            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+            "sourceText" : "128",
+            "position" : {
+              "start" : {
+                "line" : 1,
+                "column" : 54
+              },
+              "end" : {
+                "line" : 1,
+                "column" : 57
+              }
+            },
+            "comments" : [ ],
+            "value" : "128"
+          }
+        } ]
+      }
     }
   } ]
 }

@@ -78,7 +78,6 @@ public class ArgonHash extends BIF {
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
 		String	input		= arguments.getAsString( Key.input );
 		Key		variantKey	= Key.of( arguments.getAsString( Key.variant ) );
-		System.out.println( ACCEPTED_VARIANTS.asString() );
 		if ( !ACCEPTED_VARIANTS.contains( variantKey ) ) {
 			throw new BoxRuntimeException( "Invalid Argon2 variant: " + arguments.getAsString( Key.variant ) );
 		}
