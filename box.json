@@ -11,12 +11,12 @@
 	},
 	"bugs": "https://github.com/ortus-boxlang/bx-password-encrypt/issues",
 	"slug": "bx-password-encrypt",
-	"shortDescription": "Password Hashing andEncryption module for BoxLang",
+	"shortDescription": "Password Hashing and Encryption module for BoxLang",
 	"type": "boxlang-modules",
 	"keywords": ["boxlang"],
 	"boxlang": {
 		"minimumVersion": "1.0.0",
-		"moduleName": "encrypt"
+		"moduleName": "password-encrypt"
 	},
 	"private": false,
 	"license": [
