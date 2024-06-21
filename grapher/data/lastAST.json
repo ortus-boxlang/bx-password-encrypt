@@ -1,22 +1,22 @@
 {
-  "ASTType" : "BoxScript",
+  "ASTType" : "BoxTemplate",
   "ASTPackage" : "ortus.boxlang.compiler.ast",
-  "sourceText" : "result = GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 );",
+  "sourceText" : "\t<cfExampleComponent name=\"Ortus Solutions\">\n\t<cfset result = getBoxContext().getBuffer().toString()>\n",
   "position" : {
     "start" : {
       "line" : 1,
       "column" : 0
     },
     "end" : {
-      "line" : 1,
-      "column" : 60
+      "line" : 3,
+      "column" : 5
     }
   },
   "comments" : [ ],
   "statements" : [ {
-    "ASTType" : "BoxExpressionStatement",
+    "ASTType" : "BoxBufferOutput",
     "ASTPackage" : "ortus.boxlang.compiler.ast.statement",
-    "sourceText" : "result = GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 );",
+    "sourceText" : "\t",
     "position" : {
       "start" : {
         "line" : 1,
@@ -24,14 +24,14 @@
       },
       "end" : {
         "line" : 1,
-        "column" : 60
+        "column" : 1
       }
     },
     "comments" : [ ],
     "expression" : {
-      "ASTType" : "BoxAssignment",
+      "ASTType" : "BoxStringLiteral",
       "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-      "sourceText" : "result = GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 )",
+      "sourceText" : "\t",
       "position" : {
         "start" : {
           "line" : 1,
@@ -39,7 +39,138 @@
         },
         "end" : {
           "line" : 1,
-          "column" : 59
+          "column" : 1
+        }
+      },
+      "comments" : [ ],
+      "value" : "\t"
+    }
+  }, {
+    "ASTType" : "BoxComponent",
+    "ASTPackage" : "ortus.boxlang.compiler.ast.statement.component",
+    "sourceText" : "<cfExampleComponent name=\"Ortus Solutions\">",
+    "position" : {
+      "start" : {
+        "line" : 1,
+        "column" : 1
+      },
+      "end" : {
+        "line" : 1,
+        "column" : 44
+      }
+    },
+    "comments" : [ ],
+    "name" : "ExampleComponent",
+    "attributes" : [ {
+      "ASTType" : "BoxAnnotation",
+      "ASTPackage" : "ortus.boxlang.compiler.ast.statement",
+      "sourceText" : "name=\"Ortus Solutions\"",
+      "position" : {
+        "start" : {
+          "line" : 1,
+          "column" : 21
+        },
+        "end" : {
+          "line" : 1,
+          "column" : 43
+        }
+      },
+      "comments" : [ ],
+      "key" : {
+        "ASTType" : "BoxFQN",
+        "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+        "sourceText" : "name",
+        "position" : {
+          "start" : {
+            "line" : 1,
+            "column" : 21
+          },
+          "end" : {
+            "line" : 1,
+            "column" : 25
+          }
+        },
+        "comments" : [ ],
+        "value" : "name"
+      },
+      "value" : {
+        "ASTType" : "BoxStringLiteral",
+        "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+        "sourceText" : "\"Ortus Solutions\"",
+        "position" : {
+          "start" : {
+            "line" : 1,
+            "column" : 26
+          },
+          "end" : {
+            "line" : 1,
+            "column" : 43
+          }
+        },
+        "comments" : [ ],
+        "value" : "Ortus Solutions"
+      }
+    } ],
+    "body" : null
+  }, {
+    "ASTType" : "BoxBufferOutput",
+    "ASTPackage" : "ortus.boxlang.compiler.ast.statement",
+    "sourceText" : "\n\t",
+    "position" : {
+      "start" : {
+        "line" : 1,
+        "column" : 44
+      },
+      "end" : {
+        "line" : 1,
+        "column" : 46
+      }
+    },
+    "comments" : [ ],
+    "expression" : {
+      "ASTType" : "BoxStringLiteral",
+      "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+      "sourceText" : "\n\t",
+      "position" : {
+        "start" : {
+          "line" : 1,
+          "column" : 44
+        },
+        "end" : {
+          "line" : 1,
+          "column" : 46
+        }
+      },
+      "comments" : [ ],
+      "value" : "\n\t"
+    }
+  }, {
+    "ASTType" : "BoxExpressionStatement",
+    "ASTPackage" : "ortus.boxlang.compiler.ast.statement",
+    "sourceText" : "<cfset result = getBoxContext().getBuffer().toString()>",
+    "position" : {
+      "start" : {
+        "line" : 2,
+        "column" : 1
+      },
+      "end" : {
+        "line" : 2,
+        "column" : 56
+      }
+    },
+    "comments" : [ ],
+    "expression" : {
+      "ASTType" : "BoxAssignment",
+      "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+      "sourceText" : "result = getBoxContext().getBuffer().toString()",
+      "position" : {
+        "start" : {
+          "line" : 2,
+          "column" : 8
+        },
+        "end" : {
+          "line" : 2,
+          "column" : 55
         }
       },
       "comments" : [ ],
@@ -50,12 +181,12 @@
         "sourceText" : "result",
         "position" : {
           "start" : {
-            "line" : 1,
-            "column" : 0
+            "line" : 2,
+            "column" : 8
           },
           "end" : {
-            "line" : 1,
-            "column" : 6
+            "line" : 2,
+            "column" : 14
           }
         },
         "comments" : [ ],
@@ -67,155 +198,125 @@
         "sourceText" : "Equal"
       },
       "right" : {
-        "ASTType" : "BoxFunctionInvocation",
+        "ASTType" : "BoxMethodInvocation",
         "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-        "sourceText" : "GeneratePBKDFKey( \"secret\",\"saltyone\", 5000, 128 )",
+        "sourceText" : ".toString()",
         "position" : {
           "start" : {
-            "line" : 1,
-            "column" : 9
+            "line" : 2,
+            "column" : 44
           },
           "end" : {
-            "line" : 1,
-            "column" : 59
+            "line" : 2,
+            "column" : 55
           }
         },
         "comments" : [ ],
-        "name" : "GeneratePBKDFKey",
-        "arguments" : [ {
-          "ASTType" : "BoxArgument",
+        "obj" : {
+          "ASTType" : "BoxMethodInvocation",
           "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-          "sourceText" : "\"secret\"",
+          "sourceText" : ".getBuffer()",
           "position" : {
             "start" : {
-              "line" : 1,
-              "column" : 27
+              "line" : 2,
+              "column" : 32
             },
             "end" : {
-              "line" : 1,
-              "column" : 35
+              "line" : 2,
+              "column" : 44
             }
           },
           "comments" : [ ],
-          "name" : null,
-          "value" : {
-            "ASTType" : "BoxStringLiteral",
+          "obj" : {
+            "ASTType" : "BoxFunctionInvocation",
             "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-            "sourceText" : "\"secret\"",
+            "sourceText" : "getBoxContext()",
             "position" : {
               "start" : {
-                "line" : 1,
-                "column" : 27
+                "line" : 2,
+                "column" : 17
               },
               "end" : {
-                "line" : 1,
-                "column" : 35
+                "line" : 2,
+                "column" : 32
               }
             },
             "comments" : [ ],
-            "value" : "secret"
-          }
-        }, {
-          "ASTType" : "BoxArgument",
+            "name" : "getBoxContext",
+            "arguments" : [ ]
+          },
+          "name" : {
+            "ASTType" : "BoxIdentifier",
+            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+            "sourceText" : "getBuffer",
+            "position" : {
+              "start" : {
+                "line" : 2,
+                "column" : 33
+              },
+              "end" : {
+                "line" : 2,
+                "column" : 42
+              }
+            },
+            "comments" : [ ],
+            "name" : "getBuffer"
+          },
+          "arguments" : [ ],
+          "safe" : false
+        },
+        "name" : {
+          "ASTType" : "BoxIdentifier",
           "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-          "sourceText" : "\"saltyone\"",
+          "sourceText" : "toString",
           "position" : {
             "start" : {
-              "line" : 1,
-              "column" : 36
+              "line" : 2,
+              "column" : 45
             },
             "end" : {
-              "line" : 1,
-              "column" : 46
+              "line" : 2,
+              "column" : 53
             }
           },
           "comments" : [ ],
-          "name" : null,
-          "value" : {
-            "ASTType" : "BoxStringLiteral",
-            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-            "sourceText" : "\"saltyone\"",
-            "position" : {
-              "start" : {
-                "line" : 1,
-                "column" : 36
-              },
-              "end" : {
-                "line" : 1,
-                "column" : 46
-              }
-            },
-            "comments" : [ ],
-            "value" : "saltyone"
-          }
-        }, {
-          "ASTType" : "BoxArgument",
-          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-          "sourceText" : "5000",
-          "position" : {
-            "start" : {
-              "line" : 1,
-              "column" : 48
-            },
-            "end" : {
-              "line" : 1,
-              "column" : 52
-            }
-          },
-          "comments" : [ ],
-          "name" : null,
-          "value" : {
-            "ASTType" : "BoxIntegerLiteral",
-            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-            "sourceText" : "5000",
-            "position" : {
-              "start" : {
-                "line" : 1,
-                "column" : 48
-              },
-              "end" : {
-                "line" : 1,
-                "column" : 52
-              }
-            },
-            "comments" : [ ],
-            "value" : "5000"
-          }
-        }, {
-          "ASTType" : "BoxArgument",
-          "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-          "sourceText" : "128",
-          "position" : {
-            "start" : {
-              "line" : 1,
-              "column" : 54
-            },
-            "end" : {
-              "line" : 1,
-              "column" : 57
-            }
-          },
-          "comments" : [ ],
-          "name" : null,
-          "value" : {
-            "ASTType" : "BoxIntegerLiteral",
-            "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
-            "sourceText" : "128",
-            "position" : {
-              "start" : {
-                "line" : 1,
-                "column" : 54
-              },
-              "end" : {
-                "line" : 1,
-                "column" : 57
-              }
-            },
-            "comments" : [ ],
-            "value" : "128"
-          }
-        } ]
+          "name" : "toString"
+        },
+        "arguments" : [ ],
+        "safe" : false
       }
+    }
+  }, {
+    "ASTType" : "BoxBufferOutput",
+    "ASTPackage" : "ortus.boxlang.compiler.ast.statement",
+    "sourceText" : "\n",
+    "position" : {
+      "start" : {
+        "line" : 2,
+        "column" : 56
+      },
+      "end" : {
+        "line" : 2,
+        "column" : 57
+      }
+    },
+    "comments" : [ ],
+    "expression" : {
+      "ASTType" : "BoxStringLiteral",
+      "ASTPackage" : "ortus.boxlang.compiler.ast.expression",
+      "sourceText" : "\n",
+      "position" : {
+        "start" : {
+          "line" : 2,
+          "column" : 56
+        },
+        "end" : {
+          "line" : 2,
+          "column" : 57
+        }
+      },
+      "comments" : [ ],
+      "value" : "\n"
     }
   } ]
 }

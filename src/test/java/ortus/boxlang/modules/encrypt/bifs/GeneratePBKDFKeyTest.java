@@ -64,7 +64,6 @@ public class GeneratePBKDFKeyTest {
 		    result = GeneratePBKDFKey( "secret","saltyone", 5000, 128 );
 		    """,
 		    context );
-		System.out.println( variables.getAsString( result ) );
 		assertEquals(
 		    "DRWet5CSyTlafMNrXfcx1CcON3IhL/i0yXutV2d4jO9qWVyeJtDQ7HilYBe+0i8nZxlEBD2V6+CZn0ePyeBrdR0y2bzw7A1WRloRSW+fjn5oO/GqU4laNfVPo3CR9TLjxckAXBR3imAHCO0k1BiKzl0QBy0Ta5gKheSzK/ADlFM=",
 		    variables.get( result )

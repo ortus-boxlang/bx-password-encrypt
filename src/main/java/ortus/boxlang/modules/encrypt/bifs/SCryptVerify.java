@@ -18,14 +18,15 @@
  */
 package ortus.boxlang.modules.encrypt.bifs;
 
+import com.lambdaworks.crypto.SCryptUtil;
+
+import ortus.boxlang.modules.encrypt.types.EncryptKeys;
 import ortus.boxlang.runtime.bifs.BIF;
 import ortus.boxlang.runtime.bifs.BoxBIF;
-import ortus.boxlang.runtime.bifs.BoxMember;
 import ortus.boxlang.runtime.context.IBoxContext;
 import ortus.boxlang.runtime.scopes.ArgumentsScope;
 import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.types.Argument;
-import ortus.boxlang.runtime.types.BoxLangType;
 
 @BoxBIF
 
@@ -36,26 +37,24 @@ public class SCryptVerify extends BIF {
 	 */
 	public SCryptVerify() {
 		super();
-		// Uncomment and define declare argument to this BIF
-		// declaredArguments = new Argument[] {
-		// new Argument( true, "numeric", Key.number1 ),
-		// new Argument( true, "numeric", Key.number2 )
-		// };
+		declaredArguments = new Argument[] {
+		    new Argument( true, "string", Key.string ),
+		    new Argument( true, "string", EncryptKeys.hashed )
+		};
 	}
 
 	/**
-	 * Describe what the invocation of your bif function does
+	 * Performs a verification of a supplied plaintext string against a hashed value.
 	 *
 	 * @param context   The context in which the BIF is being invoked.
 	 * @param arguments Argument scope for the BIF.
 	 *
-	 * @argument.foo Describe any expected arguments
+	 * @argument.string The plaintext string to verify against the hashed value.
+	 * 
+	 * @argument.hashed The SCrypt hashed value to verify against.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
-		// Replace this example function body with your own implementation;
-		// Foo actualObj = arguments.get( Key.foo );
-		// return actualObj.foo( arguments.get( Key.bar ) );
-		return null;
+		return SCryptUtil.check( arguments.getAsString( Key.string ), arguments.getAsString( EncryptKeys.hashed ) );
 	}
 
 }

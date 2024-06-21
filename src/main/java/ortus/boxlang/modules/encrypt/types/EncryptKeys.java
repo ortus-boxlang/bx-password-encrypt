@@ -11,4 +11,6 @@ public class EncryptKeys {
 	public static final Key	parallelism	= Key.of( "parallelism" );
 	public static final Key	memory		= Key.of( "memory" );
 	public static final Key	keySize		= Key.of( "keySize" );
+	public static final Key	cpuCost		= Key.of( "cpuCost" );
+	public static final Key	saltLength	= Key.of( "saltLength" );
 }

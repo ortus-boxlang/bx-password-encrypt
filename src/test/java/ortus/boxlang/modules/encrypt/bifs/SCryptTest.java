@@ -18,7 +18,7 @@
  */
 package ortus.boxlang.modules.encrypt.bifs;
 
-import static com.google.common.truth.Truth.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -33,7 +33,7 @@ import ortus.boxlang.runtime.scopes.IScope;
 import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.scopes.VariablesScope;
 
-public class SCryptVerifyTest {
+public class SCryptTest {
 
 	static BoxRuntime	instance;
 	IBoxContext			context;
@@ -55,39 +55,28 @@ public class SCryptVerifyTest {
 		variables	= context.getScopeNearby( VariablesScope.name );
 	}
 
-	@DisplayName( "It tests the BIF SCryptVerify" )
+	@DisplayName( "It tests the SCrypt Functionality" )
 	@Test
-	public void testBif() {
-		// Remove use the following examples to create a test for your member function
-		// Full source execution:
-		// instance.executeSource(
-		// """
-		// myObj="foo";
-		// result = SCryptVerify(arr);
-		// """,
-		// context );
-		// assertThat( variables.get( result ) ).isEqualTo( "foo" );
+	public void testSCrypt() {
+		instance.executeSource(
+		    """
+		       pw="blah";
+		       hash = SCryptHash( pw );
+		    println( hash );
+		       result = SCryptVerify( pw, hash );
+		       """,
+		    context );
+		assertTrue( variables.getAsBoolean( result ) );
 
-		// Statement execution only and return the result:
-		// assertThat( ( Boolean ) instance.executeStatement( "SCryptVerify( ' + "foo" +' )" ) ).isTrue();
+		instance.executeSource(
+		    """
+		    pw="blah";
+		    hash = SCryptHash( pw, 8, 2, 32, 10, 1024 );
+		    result = SCryptVerify( pw, hash );
+		    """,
+		    context );
+		assertTrue( variables.getAsBoolean( result ) );
 
-	}
-
-	@DisplayName( "It tests the member function for SCryptVerify" )
-	@Test
-	public void testMemberFunction() {
-		// Remove use the following examples to create a test for your member function
-		// Full source execution:
-		// instance.executeSource(
-		// """
-		// myObj="foo";
-		// result = myObj.SCryptVerify();
-		// """,
-		// context );
-		// assertThat( variables.get( result ) ).isEqualTo( "foo" );
-
-		// Statement execution only and return the result:
-		// assertThat( ( Boolean ) instance.executeStatement( " ' + "foo" +'.SCryptVerify()" ) ).isTrue();
 	}
 
 }
