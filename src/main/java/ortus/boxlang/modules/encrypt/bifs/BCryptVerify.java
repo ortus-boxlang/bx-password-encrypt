@@ -45,12 +45,14 @@ public class BCryptVerify extends BIF {
 	}
 
 	/**
-	 * Describe what the invocation of your bif function does
+	 * Verifies a BCrypt hash against a plaintext string.
 	 *
 	 * @param context   The context in which the BIF is being invoked.
 	 * @param arguments Argument scope for the BIF.
 	 *
-	 * @argument.foo Describe any expected arguments
+	 * @argument.string The plaintext string to verify against the hashed value.
+	 * 
+	 * @argument.hashed The BCrypt hashed value to verify against.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
 		return BCrypt.checkpw( arguments.getAsString( Key.string ), arguments.getAsString( EncryptKeys.hashed ) );
