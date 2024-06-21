@@ -60,11 +60,10 @@ public class SCryptTest {
 	public void testSCrypt() {
 		instance.executeSource(
 		    """
-		       pw="blah";
-		       hash = SCryptHash( pw );
-		    println( hash );
-		       result = SCryptVerify( pw, hash );
-		       """,
+		    pw="blah";
+		    hash = SCryptHash( pw );
+		    result = SCryptVerify( pw, hash );
+		    """,
 		    context );
 		assertTrue( variables.getAsBoolean( result ) );
 
