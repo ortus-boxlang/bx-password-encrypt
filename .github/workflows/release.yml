@@ -1,6 +1,6 @@
 # This workflow is used to build releases
 # It can also be called by other workflows to reuse the release flow.
-name: Encryption Release
+name: Release
 
 on:
   # If you push to main this will trigger a stable release
@@ -18,12 +18,15 @@ on:
         default: false
         type: boolean
 
+  # Manual Trigger
+  workflow_dispatch:
+
 env:
-  MODULE_ID: bx-password-encrypt
-  SNAPSHOT: ${{ inputs.snapshot || false }}
+  MODULE_ID: ${{ github.event.repository.name }}
   JDK: 21
   GRADLE: 8.7
   BUILD_ID: ${{ github.run_number }}
+  SNAPSHOT: ${{ inputs.snapshot || false }}
 
 jobs:
   #############################################
@@ -34,7 +37,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       checks: write
+      pull-requests: write
       contents: write
+      issues: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -59,9 +64,16 @@ jobs:
         id: current_version
         run: |
           # Read Version from gradle.properties
-          echo "VERSION=`grep '^version=' gradle.properties | cut -d'=' -f2`" >> $GITHUB_ENV
+          TMPVERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2)
+          # Replace existing prerelease identifier with -snapshot or append -snapshot if none exists
+          # If we are on the development branch, we always append -snapshot
+          if [[ "${{ github.ref }}" == "refs/heads/development" ]]; then
+            TMPVERSION=$(echo $TMPVERSION | sed 's/-.*$//')-snapshot
+          fi
+          # Set the version in the environment
+          echo "VERSION=$TMPVERSION" >> $GITHUB_ENV
 
-          # Branche
+          # Branch
           echo "Github Ref is $GITHUB_REF"
           echo "BRANCH=main" >> $GITHUB_ENV
 
@@ -108,8 +120,6 @@ jobs:
         with:
           name: boxlang-build
           path: |
-            build/distributions/**
-            build/libs/**
             build/reports/tests/**
             changelog.md
 
@@ -124,19 +134,22 @@ jobs:
           SOURCE_DIR: "build/distributions"
           DEST_DIR: "ortussolutions/boxlang-modules/${{ env.MODULE_ID }}/${{ env.VERSION }}"
 
-      # - name: Upload API Docs to S3
-      #   uses: jakejarvis/s3-sync-action@master
-      #   with:
-      #     args: --acl public-read
-      #   env:
-      #     AWS_S3_BUCKET: "apidocs.ortussolutions.com"
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_SECRET }}
-      #     SOURCE_DIR: "build-coldbox/apidocs"
-      #     DEST_DIR: ""
+      - name: Upload API Docs to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read
+        env:
+          AWS_S3_BUCKET: "apidocs.ortussolutions.com"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_SECRET }}
+          SOURCE_DIR: "build/docs/javadoc"
+          DEST_DIR: "boxlang-modules/${{ env.MODULE_ID }}/${{ env.VERSION }}"
 
-      # - name: Publish to Maven Central
-      #   run: |
+      - name: Publish to ForgeBox
+        run: |
+          cd build/module
+          box forgebox publish --force
+          cd $GITHUB_WORKSPACE
 
       - name: Publish to ForgeBox
         run: |
@@ -154,19 +167,6 @@ jobs:
           changelog: changelog.md
           token: ${{ secrets.GITHUB_TOKEN }}
           ref: refs/tags/v${{ env.VERSION }}
-
-      - name: Upload Release Asset
-        uses: sekwah41/upload-release-assets@v1
-        if: env.SNAPSHOT == 'false'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: boxlang-${{ env.VERSION }}.zip
-          asset_content_type: application/zip
-          asset_path: |
-            build/distributions/**
-            changelog.md
 
       - name: Inform Slack
         if: ${{ always() }}
@@ -190,17 +190,19 @@ jobs:
     needs: [build]
     permissions:
       checks: write
+      pull-requests: write
       contents: write
+      issues: write
     steps:
       - name: Checkout Development Repository
         uses: actions/checkout@v4
-        if: env.LTS == 'false'
         with:
           ref: development
 
-      - name: Checkout LTS Repository
-        uses: actions/checkout@v4
-        if: env.LTS == 'true'
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: ${{ env.GRADLE }}
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
