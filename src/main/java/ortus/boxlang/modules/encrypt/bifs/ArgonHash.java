@@ -18,7 +18,9 @@
  */
 package ortus.boxlang.modules.encrypt.bifs;
 
+import java.util.ArrayList;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import de.mkammerer.argon2.Argon2;
@@ -28,10 +30,10 @@ import ortus.boxlang.modules.encrypt.types.EncryptKeys;
 import ortus.boxlang.runtime.bifs.BIF;
 import ortus.boxlang.runtime.bifs.BoxBIF;
 import ortus.boxlang.runtime.context.IBoxContext;
+import ortus.boxlang.runtime.dynamic.casters.StringCaster;
 import ortus.boxlang.runtime.scopes.ArgumentsScope;
 import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.types.Argument;
-import ortus.boxlang.runtime.types.Array;
 import ortus.boxlang.runtime.types.exceptions.BoxRuntimeException;
 import ortus.boxlang.runtime.validation.Validator;
 
@@ -40,9 +42,9 @@ import ortus.boxlang.runtime.validation.Validator;
 
 public class ArgonHash extends BIF {
 
-	public static final Array ACCEPTED_VARIANTS = new Array();
+	public static final ArrayList<Key> ACCEPTED_VARIANTS = new ArrayList<Key>();
 	static {
-		Stream.of( Argon2Types.values() ).map( type -> Key.of( type ) ).forEach( ACCEPTED_VARIANTS::add );
+		Stream.of( Argon2Types.values() ).map( type -> type.toString() ).map( type -> Key.of( type ) ).forEach( ACCEPTED_VARIANTS::add );
 	}
 
 	/**
@@ -66,20 +68,21 @@ public class ArgonHash extends BIF {
 	 * @param arguments Argument scope for the BIF.
 	 *
 	 * @argument.input The string to perform secure hashing upon.
-	 * 
+	 *
 	 * @argument.variant The Argon2 variant to use. Defaults to "ARGON2i".
-	 * 
+	 *
 	 * @argument.parallelism The number of threads to use in the hashing algorithm. Must be between 1 and 10.
-	 * 
+	 *
 	 * @argument.memory The amount of memory to use in the hashing algorithm. Must be between 8 and 100000.
-	 * 
+	 *
 	 * @argument.iterations The number of iterations to use in the hashing algorithm. Must be between 1 and 20.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
 		String	input		= arguments.getAsString( Key.input );
 		Key		variantKey	= Key.of( arguments.getAsString( Key.variant ) );
 		if ( !ACCEPTED_VARIANTS.contains( variantKey ) ) {
-			throw new BoxRuntimeException( "Invalid Argon2 variant: " + arguments.getAsString( Key.variant ) );
+			throw new BoxRuntimeException( "Invalid Argon2 variant: [" + arguments.getAsString( Key.variant ) + "]. Valid variants in this runtime are: ["
+			    + ACCEPTED_VARIANTS.stream().map( StringCaster::cast ).collect( Collectors.joining( ", " ) ) + "]" );
 		}
 		Argon2Types	variant	= Argon2Types.valueOf( arguments.getAsString( Key.variant ) );
 		Argon2		argon2	= Argon2Factory.create( variant );

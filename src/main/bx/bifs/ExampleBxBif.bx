@@ -18,7 +18,7 @@
  * - moduleRecord : The ModuleRecord instance
  *
  */
-@BoxBIF "ExampleBxBIF"
+@BoxBIF( ExampleBxBIF )
 class {
 
     /**

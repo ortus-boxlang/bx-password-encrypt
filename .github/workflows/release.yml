@@ -214,12 +214,7 @@ jobs:
 
       - name: Bump Version
         run: |
-          if [ $LTS == 'true' ]
-          then
-            ./gradlew bumpPatchVersion --stacktrace --console=plain
-          else
-            ./gradlew bumpMinorVersion --stacktrace --console=plain
-          fi
+          gradle bumpPatchVersion --stacktrace --console=plain
           git pull
 
       - name: Commit Version Bump
