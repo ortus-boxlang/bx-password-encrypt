@@ -185,7 +185,7 @@ jobs:
   ##########################################################################################
   prep_next_release:
     name: Prep Next Release
-    if: github.ref != 'refs/heads/development'
+    if: env.SNAPSHOT == 'false'
     runs-on: ubuntu-latest
     needs: [build]
     permissions:
@@ -214,12 +214,7 @@ jobs:
 
       - name: Bump Version
         run: |
-          if [ $LTS == 'true' ]
-          then
-            ./gradlew bumpPatchVersion --stacktrace --console=plain
-          else
-            ./gradlew bumpMinorVersion --stacktrace --console=plain
-          fi
+          gradle bumpPatchVersion --stacktrace --console=plain
           git pull
 
       - name: Commit Version Bump
