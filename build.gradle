@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
 	implementation 'org.connectbot:jbcrypt:1.0.2'
-	implementation 'de.mkammerer:argon2-jvm:2.11'
+	implementation 'de.mkammerer:argon2-jvm:2.12'
 	implementation 'com.lambdaworks:scrypt:1.4.0'
 
 	// Until BoxLang is published to Maven Central
