@@ -151,6 +151,12 @@ jobs:
           box forgebox publish --force
           cd $GITHUB_WORKSPACE
 
+      - name: Publish to ForgeBox
+        run: |
+          cd build/module
+          box forgebox publish --force
+          cd $GITHUB_WORKSPACE
+
       - name: Create Github Release
         uses: taiki-e/create-gh-release-action@v1.8.0
         continue-on-error: true
