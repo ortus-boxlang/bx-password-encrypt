@@ -29,7 +29,7 @@ import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.types.Argument;
 
 @BoxBIF
-
+@BoxBIF( alias = "VerifySCryptHash" )
 public class SCryptVerify extends BIF {
 
 	/**
@@ -50,11 +50,20 @@ public class SCryptVerify extends BIF {
 	 * @param arguments Argument scope for the BIF.
 	 *
 	 * @argument.string The plaintext string to verify against the hashed value.
-	 * 
+	 *
 	 * @argument.hashed The SCrypt hashed value to verify against.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
-		return SCryptUtil.check( arguments.getAsString( Key.string ), arguments.getAsString( EncryptKeys.hashed ) );
+
+		final String	versionPrefix	= "$s0";
+
+		String			hashValue		= arguments.getAsString( EncryptKeys.hashed );
+
+		if ( !hashValue.substring( 0, 3 ).equals( versionPrefix ) ) {
+			hashValue = versionPrefix + hashValue;
+		}
+
+		return SCryptUtil.check( arguments.getAsString( Key.string ), hashValue );
 	}
 
 }

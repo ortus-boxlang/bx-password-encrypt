@@ -76,6 +76,18 @@ public class SCryptTest {
 		    context );
 		assertTrue( variables.getAsBoolean( result ) );
 
+		// Test for Adobe compat with stripping out the version
+		instance.executeSource(
+		    """
+		       pw="blah";
+		       hash = SCryptHash( pw, 8, 2, 32, 10, 1024 );
+		       hash = right( hash, len( hash ) - 3 );
+		    println( "ACF Hash: " & hash );
+		       result = SCryptVerify( pw, hash );
+		          """,
+		    context );
+		assertTrue( variables.getAsBoolean( result ) );
+
 	}
 
 }
