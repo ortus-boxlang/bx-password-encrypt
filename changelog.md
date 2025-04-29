@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 * BL-1340 - Fix alias for VerifySCryptHash
+* BL-1339 - Add support for ACF stripping scrypt version prefix from hashes
 
 ## [v1.0.1] - 2025-03-01
 
