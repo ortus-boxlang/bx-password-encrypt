@@ -18,6 +18,8 @@
  */
 package ortus.boxlang.modules.encrypt.bifs;
 
+import java.security.Key;
+
 import de.mkammerer.argon2.Argon2Factory;
 import de.mkammerer.argon2.Argon2Factory.Argon2Types;
 import ortus.boxlang.modules.encrypt.types.EncryptKeys;
@@ -26,7 +28,6 @@ import ortus.boxlang.runtime.bifs.BoxBIF;
 import ortus.boxlang.runtime.context.IBoxContext;
 import ortus.boxlang.runtime.dynamic.casters.KeyCaster;
 import ortus.boxlang.runtime.scopes.ArgumentsScope;
-import ortus.boxlang.runtime.scopes.Key;
 import ortus.boxlang.runtime.types.Argument;
 import ortus.boxlang.runtime.types.exceptions.BoxRuntimeException;
 
@@ -55,9 +56,9 @@ public class ArgonVerify extends BIF {
 	 * @param arguments Argument scope for the BIF.
 	 *
 	 * @argument.input The string to verify against the hash.
-	 * 
+	 *
 	 * @argument.hashed The hashed value to verify against.
-	 * 
+	 *
 	 * @argument.variant The variant of Argon2 to use. If not provided the hashed value will be tested to determine the variant.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {
