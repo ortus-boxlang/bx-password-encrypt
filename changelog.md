@@ -9,8 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.2] - 2025-04-29
-
 ### Changed
 
 - Gradle dependency updates
@@ -34,4 +32,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]: https://github.com/ortus-boxlang/bx-password-encrypt/compare/v1.0.2...HEAD
 
-[1.0.2]: https://github.com/ortus-boxlang/bx-password-encrypt/compare/74713342e6eb5e77b20a82f08942f6fdd12a2ec8...v1.0.2
