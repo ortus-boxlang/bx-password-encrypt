@@ -9,17 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.1] - 2025-03-01
+### Changed
 
-## [1.0.1] - 2025-03-01
+* Gradle dependency updates
 
-## [1.0.0] - 2024-06-21
+### Fixed
 
-- Initial publis of module
+* BL-1340 - Fix alias for VerifySCryptHash
 
-[Unreleased]: https://github.com/ortus-boxlang/bx-password-encrypt/compare/v1.0.1...HEAD
+## [v1.0.1] - 2025-03-01
 
-[1.0.1]: https://github.com/ortus-boxlang/bx-password-encrypt/compare/v1.0.1...v1.0.1
+### Fixed
 
+* Fixes for accepted Argon Hash variants
 
-[1.0.0]: https://github.com/ortus-boxlang/bx-password-encrypt/compare/8302bd09b0bd594fffbddd6bb2817394c1b4df65...v1.0.0
+## [v1.0.0] - 2024-06-20
+
+### Added
+
+* Initial release of module

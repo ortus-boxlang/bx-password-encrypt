@@ -55,9 +55,9 @@ public class ArgonVerify extends BIF {
 	 * @param arguments Argument scope for the BIF.
 	 *
 	 * @argument.input The string to verify against the hash.
-	 * 
+	 *
 	 * @argument.hashed The hashed value to verify against.
-	 * 
+	 *
 	 * @argument.variant The variant of Argon2 to use. If not provided the hashed value will be tested to determine the variant.
 	 */
 	public Object _invoke( IBoxContext context, ArgumentsScope arguments ) {

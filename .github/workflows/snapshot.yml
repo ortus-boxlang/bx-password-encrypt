@@ -1,4 +1,4 @@
-name: Encryption Snapshots
+name: Snapshots
 
 on:
   push:
@@ -42,7 +42,8 @@ jobs:
           java-version: 21
 
       - name: Format Java Source
-        run: ./gradlew spotlessApply --stacktrace
+        run: |
+          ./gradlew spotlessApply --stacktrace
 
       - name: Commit Format Changes
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -58,6 +59,8 @@ jobs:
     secrets: inherit
     permissions:
       checks: write
+      pull-requests: write
       contents: write
+      issues: write
     with:
       snapshot: true
