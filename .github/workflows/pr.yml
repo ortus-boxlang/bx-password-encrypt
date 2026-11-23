@@ -14,6 +14,11 @@ on:
 
 jobs:
   tests:
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+      issues: read
     uses: ./.github/workflows/tests.yml
     secrets: inherit
 
@@ -31,7 +36,7 @@ jobs:
           distribution: "temurin"
           java-version: 21
 
-      - uses: Ortus-Solutions/commandbox-action@v1.0.2
+      - uses: Ortus-Solutions/commandbox-action@v1.0.3
         with:
           cmd: run-script format:check
 
